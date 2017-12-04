@@ -5,8 +5,6 @@ cache:
 jdk:
 - oraclejdk8
 sudo: required
-script:
-- mvn clean package docker:build
 services:
   - docker
 script:
