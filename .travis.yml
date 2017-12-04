@@ -6,4 +6,10 @@ jdk:
 - oraclejdk8
 sudo: required
 script:
-- mvn clean package
+- mvn clean package docker:build
+services:
+  - docker
+script:
+- docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+- mvn clean package docker:build
+- docker push $DOCKER_REPO
