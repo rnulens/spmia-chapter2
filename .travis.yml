@@ -1,13 +1,13 @@
 language: java
-cache:
+cache: #build optimization -> keep gradle dependencies in cache
   directories:
   - $HOME/.m2
 jdk:
 - oraclejdk8
-sudo: required
+sudo: required # required for?
 services:
   - docker
 script:
 - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-- mvn clean package docker:build
+- mvn clean package docker:build # build with docker maven plugin
 - docker push rnulens/repo:latest
